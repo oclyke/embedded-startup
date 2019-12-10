@@ -1,0 +1,6 @@
+# Build Artifacts
+*bin*
+
+# Upload Artifacts
+temp__OTA_blob.bin
+temp__Wired_OTA_blob.bin
