@@ -1,0 +1,3 @@
+This PACK contains the components necessary to support the Ambiq Micro Apollo
+family products on the Keil MDK debugger.  It contains the *.FLM files that
+are necessary for erasing and writing flash on the Ambiq MCUs.

@@ -1,0 +1,5 @@
+This example consists of a simple test that will blink various patterns on the
+5 LEDS of the Apollo1 EVB (evaluation board, March 2017).
+
+Note - this example will not work on the older Apollo EVK board without
+modification as the 4 LEDs of that board are on different GPIO pins.

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <package schemaVersion="1.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+    <vendor>AmbiqMicro</vendor>
+    <url>http://s3.asia.ambiqmicro.com/pack/</url>
+    <name>Apollo_DFP</name>
+    <description>Ambiq Micro Apollo Series Device Support</description>
+
+    <releases>
+      <release version="1.1.0" date="2018-08-10">
+        - Full support for Apollo3 Blue.
+      </release>
+
+	  <!--
+      <release version="1.0.1" date="2017-07-28">
+        - Support Apollo3 FPGA, very limited distribution.
+      </release>
+	  -->
+
+      <release version="1.0.0" date="2017-03-10">
+        - Update device names to correspond to their official part numbers.
+        - Update both Apollo and Apollo2 SVD files, particularly update vector table in Apollo2.svd.  Also make sure svd files are schema compliant.
+      </release>
+
+      <release version="0.9.2" date="2016-10-04">
+        Ambiq Micro Apollo Device Family Keil Pack supporting the Apollo device.
+        - Adds additional Apollo2 support.
+      </release>
+
+      <release version="0.9.1" date="2016-07-01">
+        - Update the Apollo2.svd file.
+      </release>
+
+      <release version="0.9.0" date="2016-03-07">
+        - Initial release of the Keil Pack for the Ambiq Micro Apollo2 Device supporting the FPGA emulator.
+      </release>
+
+    <release version="0.8.2" date="2015-09-27">>
+        - Rename the devices using underscores per Keil requirements.
+        - Updates the PDSC file with other minor corrections suggested by the Keil team.
+      </release>
+
+      <release version="0.8.1" date="2015-08-09">
+      - Update of the Apollo.svd file.
+      </release>
+
+      <release version="0.8.0" date="2015-06-14">
+        - Release Keil Pack containing support for the Ambiq Micro the Apollo device.
+      </release>
+
+      <release version="0.6.0" date="2015-05-05">
+        - Beta Keil Pack containing support for the Ambiq Micro Apollo device.
+      </release>
+
+    </releases>
+
+    <keywords>
+      <!-- keywords for indexing -->
+      <keyword>Ambiq</keyword>
+      <keyword>AmbiqMicro</keyword>
+      <keyword>Ambiq Micro</keyword>
+      <keyword>Apollo</keyword>
+      <keyword>Device Support</keyword>
+      <keyword>Device Family Package</keyword>
+    </keywords>
+
+  <devices>
+    <family Dfamily="Apollo Series" Dvendor="Ambiq Micro:120">
+
+      <description>
+The Apollo MCU family is an ultra-low power, highly integrated microcontroller
+designed for battery powered devices including wearable electronics, activity
+and fitness monitors, and wireless sensors. By combining ultra-low power sensor
+conversion electronics with the powerful ARM Cortex-M4F processor, the Apollo
+MCU enables complex sensor processing tasks to be completed with unprecedented
+battery life.
+
+Apollo MCUs take full advantage of Ambiq Micro's patented SPOT (Subthreshold
+Power Optimized Technology) platform, setting a new industry benchmark in
+BOTH active modes and sleep modes. Additionally, they offer the performance
+of an ARM Cortex-M4F core at power levels that are even lower than competing
+ARM Cortex-M0+ solutions. Unrivaled power savings combined with a
+high-performance processing engine make the Apollo MCUs an ideal solution
+for battery-powered devices and other power-sensitive applications.
+      </description>
+
+      <feature type="VCC"               n="1.8"     m="3.8"/>
+      <feature type="Temp"              n="-40"     m="85"/>
+      <feature type="IOs"               n="50"              name="GPIOs"/>
+      <feature type="SPI"               n="2"               name="Up to 2x master, 1.2 kHz up to 8 MHz"/>
+      <feature type="SPI"               n="1"               name="Up to 1x slave, 1.2 kHz up to 10 MHz"/>
+      <feature type="I2C"               n="2"               name="Up to 2x master, 1.2 kHz up to 1.2 MHz"/>
+      <feature type="I2C"               n="2"               name="Up to 1x slave, 1.2 kHz up to 1.2 MHz"/>
+      <feature type="UART"              n="1"               name="Ultra-low power UART"/>
+      <feature type="WDT"               n="1"/>
+      <feature type="Timer"             n="4"       m="16"  name="Timer/Counter module"/>
+      <feature type="ADC"               n="13"      m="10"  name="Up to 1 MS/s"/>
+      <feature type="TempSens"          n="1"               name="+/- 2 Deg C"/>
+      <feature type="RTC"               n="32768"           name="32 kHz ultra-low power RTC"/>
+      <feature type="BGA"               n="64"/>
+
+      <!-- ************************  Subfamily 'Apollo'  **************************** -->
+      <!-- <subFamily DsubFamily="Apollo"> -->
+
+        <!-- *************************  Device 'Apollo 512 BGA'  ***************************** -->
+        <device Dname="APOLLO512-KBR">
+          <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="SP_FPU" Dmpu="MPU" Dendian="Little-endian" Dclock="24000000"/>
+          <compile header="Device/Include/apollo1.h"         define="APOLLO_512"/>
+          <compile header="Device/Include/system_apollo1.h"  define="APOLLO_512"/>
+          <debug      svd="SVD/apollo1.svd"/>
+          <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"    default="1"/>
+          <memory     id="IRAM1"                      start="0x10000000"  size="0x10000"                   default="1"/>
+          <algorithm name="Flash/Apollo.FLM"          start="0x00000000"  size="0x10000"    RAMstart="0x10000000" RAMsize="0x2000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'Apollo 256 BGA'  ***************************** -->
+        <device Dname="APOLLO256-KBR">
+          <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="SP_FPU" Dmpu="MPU" Dendian="Little-endian" Dclock="24000000"/>
+          <compile header="Device/Include/apollo1.h"        define="APOLLO_256"/>
+          <compile header="Device/Include/system_apollo1.h" define="APOLLO_256"/>
+          <debug      svd="SVD/apollo1.svd"/>
+          <memory     id="IROM1"                      start="0x00000000"  size="0x40000"    startup="1"    default="1"/>
+          <memory     id="IRAM1"                      start="0x10000000"  size="0x08000"                   default="1"/>
+          <algorithm name="Flash/Apollo.FLM"          start="0x00000000"  size="0x10000"    RAMstart="0x10000000" RAMsize="0x2000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'Apollo 512 WLCSP'  ***************************** -->
+        <device Dname="APOLLO512-KCR">
+          <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="SP_FPU" Dmpu="MPU" Dendian="Little-endian" Dclock="24000000"/>
+          <compile header="Device/Include/apollo1.h"        define="APOLLO_512"/>
+          <compile header="Device/Include/system_apollo1.h" define="APOLLO_512"/>
+          <debug      svd="SVD/apollo1.svd"/>
+          <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"    default="1"/>
+          <memory     id="IRAM1"                      start="0x10000000"  size="0x10000"                   default="1"/>
+          <algorithm name="Flash/Apollo.FLM"          start="0x00000000"  size="0x10000"    RAMstart="0x10000000" RAMsize="0x2000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'Apollo 256 WLCSP'  ***************************** -->
+        <device Dname="APOLLO256-KCR">
+          <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="SP_FPU" Dmpu="MPU" Dendian="Little-endian" Dclock="24000000"/>
+          <compile header="Device/Include/apollo1.h"        define="APOLLO_256"/>
+          <compile header="Device/Include/system_apollo1.h" define="APOLLO_256"/>
+          <debug      svd="SVD/apollo1.svd"/>
+          <memory     id="IROM1"                      start="0x00000000"  size="0x40000"    startup="1"    default="1"/>
+          <memory     id="IRAM1"                      start="0x10000000"  size="0x08000"                   default="1"/>
+          <algorithm name="Flash/Apollo.FLM"          start="0x00000000"  size="0x10000"    RAMstart="0x10000000" RAMsize="0x2000" default="1"/>
+        </device>
+
+      <!-- </subFamily> -->
+
+      <!-- ************************  Subfamily 'Apollo2'  **************************** -->
+      <!-- <subFamily DsubFamily="Apollo2"> -->
+
+        <!-- *************************  Device 'Apollo2 1MB BGA'  ***************************** -->
+        <device Dname="AMAPH1KK-KBR">
+          <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="SP_FPU" Dmpu="MPU" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/apollo2.h"         define="APOLLO2_1024"/>
+          <compile header="Device/Include/system_apollo2.h"  define="APOLLO2_1024"/>
+          <debug      svd="SVD/apollo2.svd"/>
+          <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"    default="1"/>
+          <memory     id="IRAM1"                      start="0x10000000"  size="0x40000"                   default="1"/>
+          <algorithm name="Flash/Apollo2.FLM"         start="0x00000000"  size="0x10000"    RAMstart="0x10000000" RAMsize="0x4000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'Apollo2 1MB CSP'  ***************************** -->
+        <device Dname="AMAPH1KK-KCR">
+          <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="SP_FPU" Dmpu="MPU" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/apollo2.h"         define="APOLLO2_1024"/>
+          <compile header="Device/Include/system_apollo2.h"  define="APOLLO2_1024"/>
+          <debug      svd="SVD/apollo2.svd"/>
+          <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"    default="1"/>
+          <memory     id="IRAM1"                      start="0x10000000"  size="0x40000"                   default="1"/>
+          <algorithm name="Flash/Apollo2.FLM"         start="0x00000000"  size="0x10000"    RAMstart="0x10000000" RAMsize="0x4000" default="1"/>
+        </device>
+
+
+      <!-- ************************  Subfamily 'Apollo3'  **************************** -->
+      <!-- <subFamily DsubFamily="Apollo3"> -->
+
+        <!-- *************************  Device 'Apollo3 Blue 1MB/384KB BGA'  ***************************** -->
+        <device Dname="AMA3B1KK-KBR">
+          <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="SP_FPU" Dmpu="MPU" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/apollo3.h"         define="APOLLO3_1024"/>
+          <compile header="Device/Include/system_apollo3.h"  define="APOLLO3_1024"/>
+          <debug      svd="SVD/apollo3.svd"/>
+          <memory     id="IROM1"                      start="0x0000C000"  size="0x000F4000"   startup="1"/>
+          <memory     id="IRAM1"                      start="0x10000000"  size="0x00060000"                  default="1"/>
+          <algorithm name="Flash/Apollo3.FLM"         start="0x0000C000"  size="0x000F4000"   RAMstart="0x10000000" RAMsize="0x4000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'Apollo3 Blue 1MB/384KB CSP'  ***************************** -->
+        <device Dname="AMA3B1KK-KCR">
+          <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="SP_FPU" Dmpu="MPU" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/apollo3.h"         define="APOLLO3_1024"/>
+          <compile header="Device/Include/system_apollo3.h"  define="APOLLO3_1024"/>
+          <debug      svd="SVD/apollo3.svd"/>
+          <memory     id="IROM1"                      start="0x0000C000"  size="0x000F4000"   startup="1"    default="1"/>
+          <memory     id="IRAM1"                      start="0x10000000"  size="0x00060000"                  default="1"/>
+          <algorithm name="Flash/Apollo3.FLM"         start="0x0000C000"  size="0x000F4000"   RAMstart="0x10000000" RAMsize="0x4000" default="1"/>
+        </device>
+
+      <!-- </subFamily> -->
+
+    </family>
+  </devices>
+
+
+  <boards>
+    <!-- Apollo3 Blue Evaluation Board (EVB)  -->
+    <board vendor="Ambiq Micro" name="Apollo3 Blue EVB" revision="Ver 1.0" salesContact="sales@ambiqmicro.com" orderForm="http://www.ambiqmicro.com/contact">
+      <description>Ambiq Micro Apollo3 Blue EVB</description>
+      <mountedDevice deviceIndex="0" Dvendor="Ambiq Micro:120" Dname="AMA3B1KK-KBR"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Ambiq Micro:120" Dfamily="Apollo Series"/>
+    </board>
+
+    <!-- Apollo3 Engineering Board (EB)  -->
+    <board vendor="Ambiq Micro" name="Apollo3 Blue EB" revision="Ver 1.0" salesContact="sales@ambiqmicro.com" orderForm="http://www.ambiqmicro.com/contact">
+      <description>Ambiq Micro Apollo3 Blue EB</description>
+      <mountedDevice deviceIndex="0" Dvendor="Ambiq Micro:120" Dname="AMA3B1KK-KCR"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Ambiq Micro:120" Dfamily="Apollo Series"/>
+    </board>
+
+    <!-- Apollo2 Evaluation Board (EVB)  -->
+    <board vendor="Ambiq Micro" name="Apollo2 EVB" revision="Ver 1.0" salesContact="sales@ambiqmicro.com" orderForm="http://www.ambiqmicro.com/contact">
+      <description>Ambiq Micro Apollo2 EVB</description>
+      <image small="Images/apollo2_evb.jpg" large="Images/apollo2_evb.jpg" public="true"/>
+      <mountedDevice deviceIndex="0" Dvendor="Ambiq Micro:120" Dname="AMAPH1KK-KBR"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Ambiq Micro:120" Dfamily="Apollo Series"/>
+    </board>
+
+    <!-- Apollo Evaluation Board (EVB)  -->
+    <board vendor="Ambiq Micro" name="Apollo1 EVB" revision="Ver 1.0" salesContact="sales@ambiqmicro.com" orderForm="http://www.ambiqmicro.com/contact">
+      <description>Ambiq Micro Apollo MCU EVB</description>
+      <image small="Images/apollo1_evb.jpg" large="Images/apollo1_evb.jpg" public="true"/>
+      <mountedDevice deviceIndex="0" Dvendor="Ambiq Micro:120" Dname="APOLLO512-KBR"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Ambiq Micro:120" Dfamily="Apollo Series"/>
+    </board>
+
+    <!-- Deprecated - Apollo Evaluation Kit Board (EVK)  -->
+    <!--
+    <board vendor="Ambiq Micro" name="Apollo EVK" revision="Ver 1.0" salesContact="sales@ambiqmicro.com" orderForm="http://www.ambiqmicro.com/contact">
+      <description>Ambiq Micro MCU EVK</description>
+      <image small="Images/apollo1_evk.jpg" large="Images/apollo1_evk.jpg" public="true"/>
+      <mountedDevice deviceIndex="0" Dvendor="Ambiq Micro:120" Dname="APOLLO512-KBR"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Ambiq Micro:120" Dfamily="Apollo Series"/>
+    </board>
+	-->
+
+    <!-- Deprecated - Apollo2 Evaluation Kit Board (EVK)  -->
+    <!--
+    <board vendor="Ambiq Micro" name="Apollo2 EVK" revision="Ver 1.0" salesContact="sales@ambiqmicro.com" orderForm="http://www.ambiqmicro.com/contact">
+      <description>Ambiq Micro Apollo2 EVK</description>
+      <mountedDevice deviceIndex="0" Dvendor="Ambiq Micro:120" Dname="AMAPH1KK-KBR"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Ambiq Micro:120" Dfamily="Apollo Series"/>
+    </board>
+    -->
+  </boards>
+
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <condition id="Apollo CMSIS Device">
+      <!-- defines the condition with the ID "CMSIS-CORE" -->
+      <description>Ambiq Micro Apollo and CMSIS Core</description>
+      <require Dvendor="Ambiq Micro:120" Dname="APOLLO*"/>
+    </condition>
+
+    <condition id="Apollo2 CMSIS Device">
+      <!-- defines the condition with the ID "CMSIS-CORE" -->
+      <description>Ambiq Micro Apollo2 and CMSIS Core</description>
+      <require Dvendor="Ambiq Micro:120" Dname="AMAPH1KK*"/>
+    </condition>
+
+    <condition id="Apollo3 CMSIS Device">
+      <!-- defines the condition with the ID "CMSIS-CORE" -->
+      <description>Ambiq Micro Apollo3 Blue and CMSIS Core</description>
+      <require Dvendor="Ambiq Micro:120" Dname="AMA3B1KK*"/>
+    </condition>
+  </conditions>
+
+
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.1.0" condition="Apollo3 CMSIS Device">
+      <description>System startup for Ambiq Micro Apollo3 Blue device</description>
+
+      <RTE_Components_h>
+        <!--  the following content goes into file 'RTE_Components.h' -->
+      </RTE_Components_h>
+
+      <files>
+        <file category="include" name="Device/Include/"/>
+
+        <!-- startup/system files -->
+        <file category="header"    name="Device/Include/apollo3.h"                       version="1.1.0"/>
+        <file category="header"    name="Device/Include/system_apollo3.h"  attr="config" version="1.1.0"/>
+        <file category="source"    name="Device/Source/system_apollo3.c"   attr="config" version="1.1.0"   condition="Compiler ARMCC"/>
+        <file category="source"    name="Device/Source/startup_apollo3.s"  attr="config" version="1.1.0"   condition="Compiler ARMCC"/>
+
+        <!-- header files -->
+      </files>
+    </component>
+
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.1.0" condition="Apollo2 CMSIS Device">
+      <description>System startup for Ambiq Micro Apollo2 device</description>
+
+      <RTE_Components_h>
+        <!--  the following content goes into file 'RTE_Components.h' -->
+      </RTE_Components_h>
+
+      <files>
+        <file category="include" name="Device/Include/"/>
+
+        <!-- startup/system files -->
+        <file category="header"    name="Device/Include/apollo2.h"                       version="1.1.0"/>
+        <file category="header"    name="Device/Include/system_apollo2.h"  attr="config" version="1.1.0"/>
+        <file category="source"    name="Device/Source/system_apollo2.c"   attr="config" version="1.1.0"   condition="Compiler ARMCC"/>
+        <file category="source"    name="Device/Source/startup_apollo2.s"  attr="config" version="1.1.0"   condition="Compiler ARMCC"/>
+
+        <!-- header files -->
+      </files>
+    </component>
+
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.1.0" condition="Apollo CMSIS Device">
+      <description>System startup for Ambiq Micro Apollo1 device</description>
+
+      <RTE_Components_h>
+        <!--  the following content goes into file 'RTE_Components.h' -->
+      </RTE_Components_h>
+
+      <files>
+        <file category="include" name="Device/Include/"/>
+
+        <!-- startup/system files -->
+        <file category="header"    name="Device/Include/apollo1.h"                       version="1.1.0"/>
+        <file category="header"    name="Device/Include/system_apollo1.h"  attr="config" version="1.1.0"/>
+        <file category="source"    name="Device/Source/system_apollo1.c"   attr="config" version="1.1.0"   condition="Compiler ARMCC"/>
+        <file category="source"    name="Device/Source/startup_apollo1.s"  attr="config" version="1.1.0"   condition="Compiler ARMCC"/>
+
+        <!-- header files -->
+      </files>
+    </component>
+  </components>
+
+
+  <examples>
+    <!-- Apollo3 Blue Evaluation Board (EVB)  -->
+    <example name="Blinky" folder="Boards/Apollo_EVK/blinky" doc="Abstract.txt" version="1.0">
+      <description>This is a basic example of the Ambiq Apollo3 Blue demonstrating the development flow and blinking the 4 LEDs on the EVB.</description>
+      <board vendor="Ambiq Micro" name="Apollo3 Blue EVB"/>
+      <project>
+        <environment name="uv"  load="blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <keyword>Blinky</keyword>
+        <keyword>Getting Started</keyword>
+      </attributes>
+    </example>
+
+    <!-- Apollo3 Engineering Board (EB)  -->
+    <example name="Blinky" folder="Boards/Apollo_EVK/blinky" doc="Abstract.txt" version="1.0">
+      <description>This is a basic example of the Ambiq Apollo3 Blue demonstrating the development flow and blinking the 4 LEDs on the EVB.</description>
+      <board vendor="Ambiq Micro" name="Apollo3 Blue EB"/>
+      <project>
+        <environment name="uv"  load="blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <keyword>Blinky</keyword>
+        <keyword>Getting Started</keyword>
+      </attributes>
+    </example>
+
+    <!-- Apollo2 Evaluation Board (EVB)  -->
+    <example name="Blinky" folder="Boards/Apollo_EVK/blinky" doc="Abstract.txt" version="1.0">
+      <description>This is a basic example of the Ambiq Apollo2 demonstrating the development flow and blinking the 4 LEDs on the EVK.</description>
+      <board vendor="Ambiq Micro" name="Apollo2 EVB"/>
+      <project>
+        <environment name="uv"  load="blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <keyword>Blinky</keyword>
+        <keyword>Getting Started</keyword>
+      </attributes>
+    </example>
+
+    <!-- Apollo1 Evaluation Board (EVB)  -->
+    <example name="Blinky" folder="Boards/Apollo_EVK/blinky" doc="Abstract.txt" version="1.0">
+      <description>This is a basic example of the Ambiq Apollo demonstrating the development flow and blinking the 4 LEDs on the EVK.</description>
+      <board vendor="Ambiq Micro" name="Apollo1 EVB"/>
+      <project>
+        <environment name="uv"  load="blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <keyword>Blinky</keyword>
+        <keyword>Getting Started</keyword>
+      </attributes>
+    </example>
+
+    <!-- DEPRECATED - Apollo2 Evaluation Board (EVK)  -->
+    <!--
+    <example name="Blinky" folder="Boards/Apollo_EVK/blinky" doc="Abstract.txt" version="1.0">
+      <description>This is a basic example of the Ambiq Apollo demonstrating the development flow and blinking the 4 LEDs on the EVK.</description>
+      <board vendor="Ambiq Micro" name="Apollo2 EVK"/>
+      <project>
+        <environment name="uv"  load="blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <keyword>Blinky</keyword>
+        <keyword>Getting Started</keyword>
+      </attributes>
+    </example>
+	-->
+
+    <!-- DEPRECATED - Apollo Evaluation Board (EVK)  -->
+    <!--
+    <example name="Blinky" folder="Boards/Apollo_EVK/blinky" doc="Abstract.txt" version="1.0">
+      <description>This is a basic example of the Ambiq Apollo demonstrating the development flow and blinking the 4 LEDs on the EVK.</description>
+      <board vendor="Ambiq Micro" name="Apollo EVK"/>
+      <project>
+        <environment name="uv"  load="blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <keyword>Blinky</keyword>
+        <keyword>Getting Started</keyword>
+      </attributes>
+    </example>
+	-->
+
+  </examples>
+
+</package>
