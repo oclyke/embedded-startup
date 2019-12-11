@@ -32,6 +32,7 @@ uint32_t min_stack_pointer = 0xFFFFFFFF;
 uint32_t free_mem;
 uint32_t min_free_mem = 0xFFFFFFFF;
 bool go_deeper = true;
+uint32_t max_depth = 0;
 
 int main()
 {
@@ -67,18 +68,20 @@ int main()
     test_depth();
 #endif
 
-
     while(1){
-
+        am_util_stdio_printf("\nTest Finished");
+        am_util_delay_ms(10000);
     }
 }
 
 
-
-extern void* _eheap;
+extern unsigned char _sheap;
 uint32_t free_memory( void ){
+    // Without an implementation of _sbrk (heap management) we are assuming 
+    // that the heap has zero size. If there was heap management then you 
+    // would compute the distance to the program break (the end of the heap)
     void* local;
-    return (((uint32_t)&local) - ((uint32_t)&_eheap));
+    return (((uint32_t)&local) - ((uint32_t)&_sheap));
 }
 
 void update_stack_info( void ){
@@ -120,8 +123,6 @@ void test_fibonacci( void ){
     uint32_t F_n = 0;
     while(1){
 
-        am_util_delay_ms(250);
-
         F_n = fibonacci(count);
         am_util_stdio_printf("\nF(%d) = %d. min_free_mem = %d", count, F_n, min_free_mem);
         min_free_mem = 0xFFFFFFFF;
@@ -140,13 +141,15 @@ void deep_horizon( void ){
     if( go_deeper ){
         deep_horizon();
     }
+    max_depth++;
 }
 
 void test_depth( void ){
     go_deeper = true;
     min_free_mem = 0xFFFFFFFF;
+    max_depth = 0;
     deep_horizon();
-    am_util_stdio_printf("\nReached maximum depth! min_stack_pointer = 0x%08X, min_free_mem = %d\n", min_stack_pointer, min_free_mem);
+    am_util_stdio_printf("\nReached maximum depth! min_stack_pointer = 0x%08X, min_free_mem = %d, max_depth: %d\n", min_stack_pointer, min_free_mem, max_depth);
 }
 
 // burst mode enable

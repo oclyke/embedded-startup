@@ -8,8 +8,8 @@
           "type": "cortex-debug",
           "request": "launch",
           "name": "Cortex Debug",
-          "cwd": "${workspaceRoot}/projects/exploration-embedded-startup/example3_bss/gcc", // workspaceRoot refers to the VSCode root workspace
-          "executable": "${workspaceRoot}/projects/exploration-embedded-startup/example3_bss/gcc/bin/example_asb.axf",
+          "cwd": "${workspaceRoot}/projects/exploration-embedded-startup/example4_stack/gcc", // workspaceRoot refers to the VSCode root workspace
+          "executable": "${workspaceRoot}/projects/exploration-embedded-startup/example4_stack/gcc/bin/example_asb.axf",
           "serverpath": "C:/Program Files (x86)/SEGGER/JLink_V642/JLinkGDBServerCL.exe", // This needs to point to your GDB Server - this example shows one for SEGGER J-Link
           "servertype": "jlink",
           "device": "AMA3B1KK-KBR",
