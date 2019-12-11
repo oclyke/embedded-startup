@@ -82,10 +82,7 @@ SECTIONS
     __end__ = .;
     PROVIDE( end = . );
     _sheap = .;
-    . = ALIGN(4);
-    _eheap = .;
-    __HeapLimit = .;
-  }
+  } >sram
 
   /* dmz: the no-mans-land between the stack and the heap */
   /* purpose is to place padding between initial (empty) stack and heap */
@@ -99,8 +96,6 @@ SECTIONS
   /* _sstack is used to set the initial stack pointer */
   .stack :
   {
-    . = ALIGN(4);
-    _estack = .;
     . = ALIGN(4);
     _sstack = .;
   } >sram
