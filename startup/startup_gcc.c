@@ -133,7 +133,6 @@ __attribute__ ((section(".isr_vector")))
 void (* const g_am_pfnVectors[])(void) =
 {
     (void (*)(void))(&_sstack),             // The initial stack pointer (provided by linker script)
-    // (void (*)(void))((uint32_t)g_pui32Stack + sizeof(g_pui32Stack)),
                                             // The initial stack pointer
     Reset_Handler,                          // The reset handler
     NMI_Handler,                            // The NMI handler
