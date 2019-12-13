@@ -18,6 +18,7 @@ SECTIONS
     . = ALIGN(4);
     _stext = .;
     KEEP(*(.isr_vector))
+    KEEP(*(.ble_patch))
     *(.text)
     *(.text*)
 
