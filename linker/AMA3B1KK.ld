@@ -76,15 +76,15 @@ SECTIONS
   /* purpose is to place padding between initial (empty) stack and heap */
   .dmz :
   {
-    . = ORIGIN(sram) + LENGTH(sram) - 4; /* Automatically give the rest of the space in sram to the stack */
-    . = ALIGN(4);
+    . = ORIGIN(sram) + LENGTH(sram) - 8; /* Automatically give the rest of the space in sram to the stack */
+    . = ALIGN(8);
   }
 
   /* stack: RAM memory that can be dynamically allocated in the downward direction (decreasing memory addresses) */
   /* _sstack is used to set the initial stack pointer */
   .stack :
   {
-    . = ALIGN(4);
+    . = ALIGN(8);
     _sstack = .;
   } >sram
 }
