@@ -65,7 +65,7 @@ SECTIONS
 
   /* heap: RAM memory that can be dynamically allocated in the upward direction (increasing memory addresses) */
   /* _sheap is used to identify the beginning of available dynamic memory */
-  .heap :
+  .heap (NOLOAD):
   {
     . = ALIGN(4);
     __end__ = .;
@@ -75,7 +75,7 @@ SECTIONS
 
   /* dmz: the no-mans-land between the stack and the heap */
   /* purpose is to place padding between initial (empty) stack and heap */
-  .dmz :
+  .dmz (NOLOAD):
   {
     . = ORIGIN(sram) + LENGTH(sram) - 8; /* Automatically give the rest of the space in sram to the stack */
     . = ALIGN(8);
@@ -83,7 +83,7 @@ SECTIONS
 
   /* stack: RAM memory that can be dynamically allocated in the downward direction (decreasing memory addresses) */
   /* _sstack is used to set the initial stack pointer */
-  .stack :
+  .stack (NOLOAD):
   {
     . = ALIGN(8);
     _sstack = .;
