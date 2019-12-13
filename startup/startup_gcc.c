@@ -200,7 +200,7 @@ void (* const g_am_pfnVectors[])(void) =
 // (16 core + 48 periph) such that code begins at offset 0x100.
 //
 //******************************************************************************
-__attribute__ ((section(".patch")))
+__attribute__ ((section(".ble_patch")))
 uint32_t const __Patchable[] =
 {
     0,                                      // 32
