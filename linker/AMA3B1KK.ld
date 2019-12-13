@@ -21,21 +21,9 @@ SECTIONS
     *(.text)
     *(.text*)
 
-    /* .ctors */
-    . = ALIGN(4);
-    *crtbegin.o(.ctors)
-    *crtbegin?.o(.ctors)
-    *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
-    *(SORT(.ctors.*))
-    *(.ctors)
-
-    /* .dtors */
-    . = ALIGN(4);
-    *crtbegin.o(.dtors)
-    *crtbegin?.o(.dtors)
-    *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
-    *(SORT(.dtors.*))
-    *(.dtors)
+    __init_array_start = .;
+    KEEP(*(.init_array*))
+    __init_array_end = .;
 
     /* .rodata */
     . = ALIGN(4);
@@ -59,7 +47,7 @@ SECTIONS
     . = ALIGN(4);
     _edata = .;
   } > sram AT>flash
-  _init_data = LOADADDR(.data);
+  _init_data = LOADADDR(.data); /* used by startup to initialize data */
 
   /* bss: zero-initialized symbols */
   /* don't require flash memory to remember their value */
