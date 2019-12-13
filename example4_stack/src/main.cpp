@@ -60,12 +60,12 @@ int main()
     am_util_stdio_printf("=============\n");
     print_stack_info();
 
-#ifdef TEST_FIBONACCI
-    test_fibonacci();
-#endif
-
 #ifdef TEST_DEPTH
     test_depth();
+#endif
+
+#ifdef TEST_FIBONACCI
+    test_fibonacci();
 #endif
 
     while(1){
