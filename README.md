@@ -36,5 +36,20 @@ This is a project that investigates some of the details of startup for microcont
     * Suggested method: use or study the upload script included in the SparkFun BSPs
         ```./$PATH_TO_BSPS/common/scripts/upload_bin_asb.sh -f bin/$EXAMPLE_asb.bin -p /dev/ttyUSB0``` (on windows ```/dev/ttyUSB0``` --> ```COM4``` ) 
     * Detailed instructions coming later (you might need to ask for them)
-        
+
+# The Startup Process
+When learning how to write code most people start at ```main```. When using a scripting language like Python the ```main``` might be implied but regardless you are presented with a standard environment with a lot of support. For example C++ and Python both have built-in methods to display information. This means that there must be something going on behind the scenes but it doesn't really matter - we take it for granted. 
+
+Not any more.
+
+We're going to get into the nitty-gritty so there are no more questions about how we wound up at ```main```.
+
+## How Computers Work (quickly)
+
+
+## 
+
+
+# Linker Scripts
+
 # Explanation of Examples
