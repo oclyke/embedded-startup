@@ -5,8 +5,11 @@ This is a project that investigates some of the details of startup for microcont
 The text (below) that accompanies these examples focuses on the GNU tools GCC ad LD. 
 
 ## Contents
-* **Getting Started**
-* **Exlanation of Examples**
+* **[Getting Started](https://github.com/oclyke/exploration-embedded-startup#getting-started)**
+* **[Background](https://github.com/oclyke/exploration-embedded-startup#background)**
+* **[The Startup Process](https://github.com/oclyke/exploration-embedded-startup#the-startup-process)**
+* **[Exlanation of Examples](https://github.com/oclyke/exploration-embedded-startup#explanation-of-examples)**
+* **[Going Further](https://github.com/oclyke/exploration-embedded-startup#going-further)**
 
 # Getting Started:
 
