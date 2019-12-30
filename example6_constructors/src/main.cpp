@@ -9,9 +9,6 @@
 #define WAIT_TIME 500 //msec
 #define LED AM_BSP_GPIO_LED_BLUE
 
-// Declare the libc init array function
-extern "C" void __libc_init_array(void);
-
 /* A very simple class to test constructor execution */
 class LEDSTATE {
 private:
@@ -86,8 +83,7 @@ static void callConstructors()
 
 int main()
 {
-    // // Call cnstructors
-    // __libc_init_array();
+    // Call cnstructors
     callConstructors();
 
     // Setup system clocks
