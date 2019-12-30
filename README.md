@@ -208,3 +208,12 @@ This example tests dynamic memory allocation using ```malloc```. It requires a d
 
 ## [Example 6: Constructors](https://github.com/oclyke/exploration-embedded-startup/blob/master/example6_constructors/README.md)
 A special example just for C++. Shows what it takes to ensure that gobal/static constructors are called before the user begins application code. 
+
+# Going Further
+
+## Helpful Links
+https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_chapter/ld_3.html
+https://sourceware.org/binutils/docs/ld/Output-Section-LMA.html
+https://onlinedisassembler.com/static/home/index.html
+https://embeddedartistry.com/blog/2019/04/17/exploring-startup-implementations-newlib-arm/
+https://bitbashing.io/embedded-cpp.html
