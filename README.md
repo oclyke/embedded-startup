@@ -158,3 +158,53 @@ int main()
 
 The only source files used are ```main.cpp``` and ```startup_gcc.c```.
 
+Since there are no initialized values to handle both the data and bss loops run straight through in as few cycles as possible:
+
+Assembly block | Number of Cycles
+--- | ---
+copy data segment | 5
+zero fill bss | 7
+
+## Example 2: Data
+Now we add non-trivial initial values to see how the framework responds. Still, the only source files used are ```main.cpp``` and ```startup_gcc.c```.
+
+The number of cycles taken in the copy loop (data section) is related to the number of unique bytes of initialization data 
+
+Number of unique bytes | Number of Cycles in Copy Loop
+--- | ---
+0 | 5
+1 | 10
+2 | 10
+3 | 10
+4 | 10
+5 | 15
+6 | 15
+7 | 15
+8 | 15
+
+## Example 3: BSS
+As a counterpart to the data section the BSS allows the compact expression of many trivially initialized variables. Like the previous examples only ```main.cpp``` and ```startup_gcc.c``` are used in the compilation.
+
+Number of bytes | Number of Cycles in BSS Fill Loop
+--- | ---
+0 | 7
+1 | 11
+2 | 11
+3 | 11
+4 | 11
+5 | 15
+6 | 15
+7 | 15
+8 | 15
+9 | 19
+
+## Example 4: Stack
+This example adds a fair deal of complexity in order to test the operation of the stack. To the compilation we add two more source files which are provided in the SDK to handle printing to the UART (so that we can easily read test results)
+
+The example first tests the maximumm recursive call depth - which relies on stack functionality. Because no memory is dynamically allocated nearly all of the system RAM can be dedicated to tracking context. 
+
+## Example 5: Heap
+This example tests dynamic memory allocation using ```malloc```. It requires a definition of ```_sbrk``` which uses the stack and heap locations to determine if free memory exists. 
+
+## Example 6: Constructors
+A special example just for C++. Shows what it takes to ensure that gobal/static constructors are called before the user begins application code. 
