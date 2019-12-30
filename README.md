@@ -215,8 +215,9 @@ A special example just for C++. Shows what it takes to ensure that gobal/static 
 # Going Further
 
 ## Helpful Links
-https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_chapter/ld_3.html
-https://sourceware.org/binutils/docs/ld/Output-Section-LMA.html
-https://onlinedisassembler.com/static/home/index.html
-https://embeddedartistry.com/blog/2019/04/17/exploring-startup-implementations-newlib-arm/
-https://bitbashing.io/embedded-cpp.html
+
+* [GNU LD Manual](https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_chapter/ld_3.html)
+* [LD VMA vs LMA](https://sourceware.org/binutils/docs/ld/Output-Section-LMA.html)
+* [Online Disassembler](https://onlinedisassembler.com/static/home/index.html)
+* [C++ On Embedded Systems](https://bitbashing.io/embedded-cpp.html)
+* [Exploring Startup Implementations: Newlib (ARM)](https://embeddedartistry.com/blog/2019/04/17/exploring-startup-implementations-newlib-arm/)
