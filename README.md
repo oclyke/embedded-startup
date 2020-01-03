@@ -59,7 +59,7 @@ More specifically when we consider the vast majority of computers around us we c
 
 1. Instructions and data are stored in a non-volatile form of memory
 1. A 'program counter' keeps track of which instruction should be executed next
-1. Instructions are followed to manipulate information in a volatile memory pace by a control unit and an arithmetic unit
+1. Instructions are followed to manipulate information in a volatile memory space by a control unit and an arithmetic unit
 1. A **reset circuit** is used to put the program counter into a known initial state.
 
 Given these capabilities and a sufficient set of instructions the computer will be '[turing complete](https://en.wikipedia.org/wiki/Turing_completeness)' and therefore be able to handle all the same tasks as any other modern computer.
